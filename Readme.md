@@ -122,3 +122,32 @@ Escribe buenos commits.
         Proveer todo el contexto necesario a un commit, en lugar de saturar el sumario del commit, aniadir informacion que sea necesaria en el cuerpo del mensaje. Para ello utilizamos git commit, donde la primera linea sea el titulo y la segunda linea sea el cuerpo, aplicar reglas de puntuacion.
 ## No hice los apuntes de estos dias debido a que no me encuentraba muy bien de salud
 ## Respaldado por Saul Cordova Villarroel.
+
+## Clase 3
+### Que es GitHub?
+Github es una plataforma en la nube y red social para desarrolladores que permite alojar, gestionar y colaborar en proyectos de software utilizando Git.
+
+### Git Vs GitHub
+Git es un sistema de control de versiones que crea los puntos de guardado y GitHub es el servidor donde esos puntos se almacenan y se socializan con el mundo. GitHub usa Git pero no son lo mismo.
+
+### Generar conexion con GitHub
+La conexion se realizar a partir de modo que sea requerido, ya sea por ssh o por https, ya sea para repositorios nuevos (por crear) como para repositorios ya creados se siguen una cantidad de pasos que nos permite conectar nuestro Git con GitHub, algunos comandos son:
+```
+git remote add origin git@github.com ...
+git push origin branch -> empujar cambios a una rama
+git remote -v -> visualizar a que repositorio remotes esta conectando
+git clone ... -> Clonacion de un repositorio
+ssh-ketgen -t ed255519 -C "correo@gmail.com" -> generar llave privada para la conexion con github por medio de configuracion ssh
+git commit --amend -m 'mensaje' -> este comando agarra el ultimo commit y modifica el mensaje por el nuevo descrito 
+```
+
+### Manipulacion de cambios 
+Existen dos comandos para manipular los cambios ya sean realizados anteriormente y falta existe una falta de actualizacion:
+```
+git pull origin [nombre_rama]
+```
+este comando actualiza los cambios de una rama especifica
+el siguiente comando permite empujar todos los cambios realizados en tu maquina local, enviando al servidor el codigo actualizado trabajado en este tiempo
+```
+git push origin [nombre_rama]
+```
