@@ -186,3 +186,68 @@ Es posible hacer cambios experimentales a commits anteriores ya almacenados y no
 por lo menos por los siguientes 30 dias, para conservar tenemos que almacenarlos en un rama aparte para posteriormente unirlos
 No es lo recomendado hacer esto, preferible mantener una buena practica y solo para hacer una revision al codigo anterior.
 Si hay algo en area de staging, no se puede aplicar el checkout, no podremos ver cambios anteriores y demas.
+
+
+## Clase 5
+### Ramas y GitFlow Basico
+
+#### Que son las ramas?
+Las ramas son una de las principales utilidades que disponemos en Git para llevar un mejor control del codigo. El concepto que se maneja es simple, 
+realiza el uso de un apuntador con el que nos podemos mover libremente que por defecto apunta a la rama master, cuando nosotros hacemos la creacion 
+de una nueva rama, hacemos que este apuntador se dirija a esta rama y nos permita aplicar todo tipo de cambios.
+
+#### Git Branch
+Este es un comando que nos permite gestionar las ramas que tiene o tendra nuestro proyecto, esto en base a distintos comandos:
+```
+git branch (Lista las ramas disponibles y nos muestra el posicionamiento actual del HEAD)
+```
+
+```
+git branch <rama> (creacion de una nueva rama a partir de donde nos posicionamos actualmente)
+```
+
+```
+git branch -D <nombre_rama> Borra o elimina una rama
+```
+
+#### Git checkout enfocado en ramas 
+El objetivo del git checkout es para poder visualizar nuestros archivos pasados mediante commits pero tambien puede ser usado para navegar entre 
+distintas ramas, usando estos distintos comandos como:
+```
+git checkout <nombre_rama> (Realiza el cambio de ramas pero no debemos tener nada un modified/untracked o stagged)
+```
+
+```
+git checkout -b <nombre_rama> (Crea una rama y mueve a ella directamente)
+```
+#### Git Checkout vs Git Switch
+Git Switch es un comando que separa responsabilidades y la navegacion de ramas debido a que git checkout se encontraba demasiado sobrecargado ya 
+que se encargaba de distintas funciones como cambiar de ramas, viajar a commits antiguos y restaurar archivos, por lo que git switch aligero de 
+carga y permitio que sea las seguro e intuitivo.
+
+Git switch es especializado unicamente en ramas y evita errores accidentales al moverse, es el comando moderno desde 2019.
+
+#### GITFLOW Basico
+Es un flujo de trabajo (workflow) el cual nos permite trabajar de manera ordenada nuestras ramas, pues a traves de ciertas consignas y reglas 
+establecidas, nos permite trabajar ordenadamente con ramas, version una facil adaptacion para cualquier que quiera aportar en los proyectos,
+muy util para la SCESI donde gestionar de nuestra manera propia nuestros proyectos.
+
+#### Como funciona GitFlow?
+Se trabaja en tres secciones especificas clasificadas en:
+
+Main: Por defecto tenemos la rama main o mastes la cual es creada al generar un nuevo repositorio de git. El proposito de esta rama es contener
+el codigo que se encuentra en produccion. 
+
+Develop: Es la rama preproduccion y su proposito es tener las caracteristicas que se estan probando, mas todavia si no han sido probadas del todo 
+o validadas, pero que seran lanzadas a produccion pronto y donde se trabaja a lo largo del proyecto
+
+Ramas de apoyo: Son ramas que permite escribir codigo y estas pueden ser feature, release y hotfix
+
+#### Cuando usar feature, release y hotfix
+Feature: Utilizada para trabajar una nueva caracteristica para el proyecto. Estas ramas se crean a partir de la rama develop y una ves que finalizan
+son fusionadas a develop y eliminadas.
+Release: Cunado preparas el lanzamiento de una nueva version. Es en teoria donde se hacen pruebas (QA). Se crean en develop y se fusionan en develop
+o main (master)
+Hotfix: Para trabajar en cambios imprevistos como parches para arregla un bug o un problema en produccion. Por eso, al crear una rama hotfix se debe 
+hacer desde la rama main ya que no se podria crear una solucion desde la rama develop ya que contiene cambios que pueden ser inestables. Nacen desde 
+el main y se fusionan a main o develop. 
