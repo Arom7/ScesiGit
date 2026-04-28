@@ -151,3 +151,7 @@ el siguiente comando permite empujar todos los cambios realizados en tu maquina 
 ```
 git push origin [nombre_rama]
 ```
+## No hice los apuntes de estos dias debido a que no me encuentraba muy bien de salud
+## Respaldado por Saul Cordova Villarroel.
+
+## Clase 4
