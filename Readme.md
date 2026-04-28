@@ -90,7 +90,7 @@ Aca viene el codigo
     git reset --soft HEAD~1
     ```
 
-<img src="images/imagenUno.png]" alt="Imagen sobre estados clase dos" />
+<img src="images/imagenUno.png" alt="Imagen sobre estados clase dos" />
 
 #### .gitignore
     Realiza el no seguimiento a distintos archivos marcados en este archivo.
@@ -155,3 +155,34 @@ git push origin [nombre_rama]
 ## Respaldado por Saul Cordova Villarroel.
 
 ## Clase 4
+### Que es git remote?
+Comando que nos permite gestionar nuestra conexiones 
+
+### Multiples SSH
+Es como tener tuneles con distintas puertas, donde cada puerta tiene su propio cerrojo que es abierto por una sola llave especifica.
+```
+ssh-keygen -t ed25519 -C "correo@gmail.com" -f ~/.shh...[colocar la direccion donde queremos almacenar la key generada.]
+```
+Considerar que la direccion debe ser para un archivo unico porque sino sobreescribira sobre uno ya existente.
+
+<img src="images/imagenDos.png" alt="Imagen para conexion ssh en github" />
+
+Cada ssh generada con el objetivo de utilizarlo en github debe ser agregada en la seccion de la imagen.
+
+Para utilizar otra ssh solo debemos hacer la modificacion por medio del comando
+```
+git remote set-url origin git@github-auxi:[url_repositorio] -> ahora con un usuario distinto
+git remote set-url origin git@github.com:[url_repositorio] -> antes con el usuario principal
+```
+Para cambiar la configuracion local de la global simplemente no debemos tener en cuenta el --global
+
+### Que es git checkout?
+Es el comando que nos permite desplazarnos, visualizando esos puntos de guardados.
+Nos sirve para inspeccionar (ver como era el codigo de un commit antiguo).
+Restaurar (Recuperar archivos borrados o cambiados).
+Experimentar (Probar cambios sin arruinar la rama principal).
+Cambiar (Saltos de una rama a otra / ej. de main a desarrollo).
+Es posible hacer cambios experimentales a commits anteriores ya almacenados y no en los actuales, el commit no desaparece
+por lo menos por los siguientes 30 dias, para conservar tenemos que almacenarlos en un rama aparte para posteriormente unirlos
+No es lo recomendado hacer esto, preferible mantener una buena practica y solo para hacer una revision al codigo anterior.
+Si hay algo en area de staging, no se puede aplicar el checkout, no podremos ver cambios anteriores y demas.
