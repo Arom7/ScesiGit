@@ -250,4 +250,64 @@ Release: Cunado preparas el lanzamiento de una nueva version. Es en teoria donde
 o main (master)
 Hotfix: Para trabajar en cambios imprevistos como parches para arregla un bug o un problema en produccion. Por eso, al crear una rama hotfix se debe 
 hacer desde la rama main ya que no se podria crear una solucion desde la rama develop ya que contiene cambios que pueden ser inestables. Nacen desde 
-el main y se fusionan a main o develop. 
+el main y se fusionan a main o develop.
+
+## Clase 6
+
+### Git Merge
+Es un comando que permite la union o combinacion de dos ramas trabajadas de manera separada para mantener un historial de cambios aplicada a una sola 
+rama de manera general.
+
+```
+git checkout [nombre_rama_develop] (Navegar a la rama principal de trabajo antes de produccion)
+```
+
+```
+git fetch (Visualiza las ramas a partir de develop y todas sus subramas ademas de actualizar todos los cambios de estas mismas)
+```
+
+```
+git pull origin develop (obtiene todos los cambios de la rama develop actualmente al repositorio local, esto hacer antes de iniciar el trabajo)
+```
+
+### Merge limpio, caso sin conflictos
+Este es el merge ideal, sin conflictos de por medio y unimos con la rama de trabajo personal con develop
+```
+git merge --no-ff [nombre_rama_trabajo] 
+```
+Posteriormente debemos eliminar la rama independiente de trabajo, cabe considerar que este procedimiento se realiza siempre y cuando no tengamos
+nada mas que realizar en esta rama
+```
+git branch -D [nombre_rama_trabajo]
+```
+### Merge con conflictos, como arreglarlos?
+Hacemos el mismo procedimiento para la fusion
+```
+git merge --no-ff [nombre_rama_trabajo] 
+```
+En este caso notaremos que los cambios fueron encontrados con distintos conflictos y git saltara con estos archivos y git pedira resolver estos 
+conflictos. Para resolver los conflictos debemos realizar una limpieza de simbolos de git que se incluyen en el archivo y elegir o combinar 
+los cambios para mantener un mismo formato.
+El conflicto nace de la modificacion entre dos archivos que una persona previamente trabajo y nosotros realizamos cambios tambien sobre el mismo 
+archivo, consideremos que es como una revision manual de nuestros archivos que fueron modificados. Una ves resueltos debemos mandar a estado de 
+staging y posteriormente commitearlos
+### No hacer git fetch y git pull. Manejar los cambios en la rama personal que en develop !!!
+```
+git switch -c "[nombre_nueva_rama]" (Es otra forma de crear una rama nueva)
+
+```
+```
+git push -u origin [nombre_rama] (Crea la nueva rama remota sin ser duenios del repositorio)
+```
+
+Este proceso es el peor caso debido a que podemos tener problemas a futuro con el codigo, lo cual genera conflictos grandes y lineas de ramas de
+tiempo separadas. Es importante comunicar nuestros cambios
+
+Cuando suceda esta situacion realizar el merge pero no en develop, sino en nuestra rama para evitar conflictos en la rama develop para no ponerla 
+en riesgo, para solo afectar nuestra rama y no afectar cambios de nuestros companieros.
+
+Pasos para hacerlo:
+```
+git switch ['nombre_nuestra_rama']
+git merge develop (asi manejamos los conflictos en nuestra rama evitando errores para otros desarrolladores)
+```
