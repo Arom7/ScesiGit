@@ -311,3 +311,28 @@ Pasos para hacerlo:
 git switch ['nombre_nuestra_rama']
 git merge develop (asi manejamos los conflictos en nuestra rama evitando errores para otros desarrolladores)
 ```
+## Clase 7
+### Que son los pull request?
+Son un formato de trabajo con git/github donde creamos un request en el grupo del repositorio de github que nos permitira si se desea realizar un 
+merge o unir al codigo base algun cambio que ya se tiene.
+### Como crear un pull request?
+
+
+### Porque usar pull request?
+Especificamente es utilizado en por seguridad, evitar que cualquier colaborador pueda tocar el codigo trabajado, modificarlo y unir cambios sin 
+preguntar o realizar un aviso aplica un riesgo constante para el codigo fuente porque puede pasar razones como: y si algo sale mal? Si esta 
+metiendo codigo malisioso? que codigo es pusheando? un intento de hacking porque una persona se gano mi confianza?
+Los pull request permite que el equipo visualizar los cambios a la fuerza, limita la colaboracion y obliga al debate y deliberacion. Ademas permite
+entender que vamos a poner en marcha, quien lo hara y presentar una opinion de aprobar u oponerse al cambios, permitiendonos un mejor manejo grupal 
+de nuestro repositorio en equipo.
+
+### Como proteger mi repositorio y limitar la colaboracion?
+Muchas veces no tenemos modificados correctamente los pull request y cualquiera colabora con nuestro repositorio por lo que haria que sea inseguro. 
+Para ello se toman distintas medidas de seguridad pese a tener colaboradores en confianza:
+Paso 1: Dirigirnos a settings / branches
+Paso 2: Creamos la opcion add branch ruleset
+Paso 2.1 : Damos un nombre a la regla
+Paso 2.2 : Habilitar la regla
+Paso 2.3 : Extra (add bypass funciones extra)
+Paso 2.4 : Aniadimos un target (add target en rama develop, main y las que necesiten) -> ramas a proteger
+Paso 2.5 : Aniadir restrict updates y require pull request before merging (aca definir la mitad + 1)
