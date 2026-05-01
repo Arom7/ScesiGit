@@ -27,16 +27,17 @@ git config --global core.autocrlf true
 git config --list
 
 ### Archivos que todo repo deberia tener
-    Readme.md -> archivo con el objetivo de redactar 
-    .gitignore -> archivos a ignorar en el repositorio.
+Readme.md -> archivo con el objetivo de redactar toda la documentacion posible ya sea un sistema de software o proyecto.
+.gitignore -> archivos a ignorar en el repositorio (especifico para archivo .env).
 
+### Notas para documentos tipos markdown (.md)
 Uso para titulos
 #    
 Subtitulos
 ##
 Parrafo normal
 ...
-Codigo
+Incluir Codigo
 ```
 Aca viene el codigo
 ```
@@ -49,51 +50,56 @@ Aca viene el codigo
 ### Los estados de Git
 
 #### Directorio de trabajo (Modificado)
-    La carpeta local donde la diferencia es que GIT observa sus cambios y los cataloga:
-        Untracked -> Sin seguimiento, se lo ve pero no tiene una version antigua de ese archivo, sucede cuando este es creado.
-        Modified -> Es cuando GIT ya tiene una version previa del archivo y lo modificaste4, eliminaste o cambiaste el nombre.
+La carpeta local donde la diferencia es que GIT observa sus cambios y los cataloga:
+    Untracked -> Sin seguimiento, se lo ve pero no tiene una version antigua de ese archivo, sucede cuando este es creado.
+    Modified -> Es cuando GIT ya tiene una version previa del archivo y lo modificaste4, eliminaste o cambiaste el nombre.
 
-    Cualquier archivo que no este en el .gitignore pasa automaticamente a uno de esto estados dependiendo que se haya hecho. Considerar que aca escribimos codigo pero GIT aun no lo tiene "asegurado".
+Cualquier archivo que no este en el .gitignore pasa automaticamente a uno de esto estados dependiendo que se haya hecho. Considerar que aca escribimos codigo pero GIT aun no lo tiene "asegurado".
 
-    Queremos que un archivo vuelva a su estado original, que pase de modified a su estado original 
-    ```
-    git restore <archivo>
-    ```
-    Borrando fisicamente lo que se escribio, tener cuidado.
+Queremos que un archivo vuelva a su estado original, que pase de modified a su estado original 
+```
+git restore <archivo>
+```
+Borrando fisicamente lo que se escribio, tener cuidado.
 
-    No quiero que el archivo que cree lo vea GIT?
-    Agregamos el nombre del archivo completo al .gitignore
+No quiero que el archivo que cree lo vea GIT?
+Agregamos el nombre del archivo completo al .gitignore
 #### Stage Area (Preparado)
-    El area de espera. Le decimos a GIT: "Esto es lo que quiero guardar".
+El area de espera. Le decimos a GIT: "Esto es lo que quiero guardar".
 
-    Esta area nos permite seleccionar quue archivos modificados se incluiran en el siguiente commit (guardado) y cuales no.
+Esta area nos permite seleccionar quue archivos modificados se incluiran en el siguiente commit (guardado) y cuales no.
 
-    Para traer un archivo de stage area lo que debes hacer es:
-    ```
-    git add <archivo> : Agrega el archivo <archivo>, lo hace uno por uno.
-    git add . : Agrega todos los archivos que sean observados por GIT.
-    ```
+Para traer un archivo de stage area lo que debes hacer es:
+```
+git add <archivo> : Agrega el archivo <archivo>, lo hace uno por uno.
+git add . : Agrega todos los archivos que sean observados por GIT.
+```
 
-    Si queremos sacar un archivo del stage area para volver a un estado anterior:
-    ```
-    git restore --staged <archivo>
-    ```
+Si queremos sacar un archivo del stage area para volver a un estado anterior:
+```
+git restore --staged <archivo>
+```
+
 #### Repositorio Local (Confirmado)
-    El historial; Los cambios ya tiene un ID (hash) y son parte de la historia.
-    Esta es la ultima fase, aqui es donde le decimos al repositorio que cree el punto de guardado para que todos los cambios que estan en staged pasen a ser parte del historial.
-    ```
-    git commit -m "mensaje"
-    ```
 
-    Para deshacer el ultimo commit el comando es:
-    ```
-    git reset --soft HEAD~1
-    ```
+El historial; Los cambios ya tiene un ID (hash) y son parte de la historia.
+Esta es la ultima fase, aqui es donde le decimos al repositorio que cree el punto de guardado para que todos los cambios que estan en staged pasen a ser parte del historial.
+```
+git commit -m "mensaje"
+```
+
+Para deshacer el ultimo commit el comando es:
+```
+git reset --soft HEAD~1
+```
 
 <img src="images/imagenUno.png" alt="Imagen sobre estados clase dos" />
 
 #### .gitignore
-    Realiza el no seguimiento a distintos archivos marcados en este archivo.
+
+Realiza el no seguimiento a distintos archivos marcados en este archivo (importante para archivos que realizan el 
+manejo de claves o keys, configuraciones en el servidor, ect...).
+
 #### Buenas practicas en commits
 Cada cuanto debo hacer un commit?
 El uso de commits es de tipo atomicos, donde cada cambio representa un unico cambio logico, pequenio y completo en el codigo fuente. Es mejor hacer commits pequenios, agrupando las mejoras o acciones, la idea no es hacer commits sin sentidos, sino que sean leves progresos en interacciones pequenias que tengan un significado permitiendo a la aplicacion o proyecto funcionando.
@@ -137,7 +143,7 @@ git remote add origin git@github.com ...
 git push origin branch -> empujar cambios a una rama
 git remote -v -> visualizar a que repositorio remotes esta conectando
 git clone ... -> Clonacion de un repositorio
-ssh-ketgen -t ed255519 -C "correo@gmail.com" -> generar llave privada para la conexion con github por medio de configuracion ssh
+ssh-ketgen -t ed255519 -C "correo@gmail.com" -> generar llave privada para la conexion con github por medio de configuracion ssh (considerar que si tenemos uno o mas SO debemos generar distintas ssh-key como buena practica)
 git commit --amend -m 'mensaje' -> este comando agarra el ultimo commit y modifica el mensaje por el nuevo descrito 
 ```
 
@@ -147,6 +153,7 @@ Existen dos comandos para manipular los cambios ya sean realizados anteriormente
 git pull origin [nombre_rama]
 ```
 este comando actualiza los cambios de una rama especifica
+
 el siguiente comando permite empujar todos los cambios realizados en tu maquina local, enviando al servidor el codigo actualizado trabajado en este tiempo
 ```
 git push origin [nombre_rama]
@@ -168,6 +175,16 @@ Considerar que la direccion debe ser para un archivo unico porque sino sobreescr
 <img src="images/imagenDos.png" alt="Imagen para conexion ssh en github" />
 
 Cada ssh generada con el objetivo de utilizarlo en github debe ser agregada en la seccion de la imagen.
+
+<img src="images/imagenAddSsh.png" alt="Imagen para conexion ssh en github" />
+
+En esta imagen es una referencia a que debemos anaidir un titulo, un tipo de llave y la llave generada en el
+archivo .pub, la otra es de caracter privado.
+
+<img src="images/imagenSshGenerada.png" alt="Imagen para conexion ssh en github" />
+
+Finalmente como notaremos tenemos las llaves generadas agregadas a github y nos permite trabajar de manera remota y
+segura desde nuestro dispositivo
 
 Para utilizar otra ssh solo debemos hacer la modificacion por medio del comando
 ```
