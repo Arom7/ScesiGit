@@ -316,7 +316,12 @@ git merge develop (asi manejamos los conflictos en nuestra rama evitando errores
 Son un formato de trabajo con git/github donde creamos un request en el grupo del repositorio de github que nos permitira si se desea realizar un 
 merge o unir al codigo base algun cambio que ya se tiene.
 ### Como crear un pull request?
-
+Para poder crear un nuevo pull request se debe ir a dicha seccion en el repositorio y seleccionar new pull request
+<img src="images/imagenPullRequestUno.png" alt="Imagen para pull request" />
+realizado esto procederemos a la comparacion entre ramas, como ejemplo se coloco entre la main y develop
+<img src="images/imagenPullRequestDos.png" alt="Imagen para pull request" />
+culminando con esta parte simplemente se debe agregar una descripcion y titulo relacionado al trabajo realizado, con 
+ello notaremos que nuestro pull request sera enviado a zona de evaluacion donde segun reglas establecidas en el repositorio se procedera a la aplicacion de merge y posible resolucion de conflictos o simplemente aplicar cambios.
 
 ### Porque usar pull request?
 Especificamente es utilizado en por seguridad, evitar que cualquier colaborador pueda tocar el codigo trabajado, modificarlo y unir cambios sin 
